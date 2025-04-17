@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Example</title>
+    <!-- Include React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Include Babel for JSX transpiling -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #root {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .results {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // Define the MyCounter component
+        function MyCounter(props) {
+            return <h2>Current count: {props.count}</h2>;
+        }
+
+        // Define the Scoreboard component
+        function Scoreboard(props) {
+            const { scores } = props;
+            return (
+                <div className="results">
+                    <h3>Scoreboard</h3>
+                    <ul>
+                        {Object.entries(scores).map(([player, score]) => (
+                            <li key={player}>{player}: {score}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        // Define the DashboardUnit component
+        function DashboardUnit(props) {
+            return (
+                <div data-index={props['data-index']}>
+                    <h1>Scores</h1>
+                    {props.children}
+                </div>
+            );
+        }
+
+        // Define the App component
+        function App() {
+            const gameScores = { player1: 2, player2: 5 };
+
+            return (
+                <div>
+                    <MyCounter count={3 + 5} />
+                    <DashboardUnit data-index="2">
+                        <Scoreboard scores={gameScores} />
+                    </DashboardUnit>
+                </div>
+            );
+        }
+
+        // Render the App component into the DOM
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>

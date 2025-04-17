@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>React Samples</title>
+</head>
+<body>
+  <!-- Target container -->
+  <div id="root"></div>
+
+  <!-- React library & ReactDOM (Development Version) -->
+  <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+
+  <script>
+    const list = React.createElement( 
+"ul",
+null,
+React.createElement("li",  null,  "2 lb salmon"),
+React.createElement("li",  null,  "5 sprigs fresh rosemary"),
+React.createElement("li",  null,  "2 tablespoons olive oil"),
+React.createElement("li",  null,  "2 small lemons"),
+React.createElement("li",  null,  "1 teaspoon kosher salt"),
+React.createElement("li",  null,  "4 cloves of chopped garlic") 
+);
+console.log(list);
+
+  </script>
+</body>
+</html>
