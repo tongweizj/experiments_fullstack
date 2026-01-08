@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <style>
+            .item-a {
+  grid-area: header;
+  background-color: lightseagreen;
+}
+.item-b {
+  grid-area: main;
+  background-color: bisque;
+}
+.item-c {
+  grid-area: sidebar;
+  background-color: lightblue;
+}
+.item-d {
+  grid-area: footer;
+  background-color: lightsteelblue;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+}
+        </style>
+    </head>
+<body>
+    <div class="container">
+<div class="item-a">header</div>
+<div class="item-b">main</div>
+<div class="item-c">sidebar</div>
+<div class="item-d">footer</div>
+    </div>
+    </body>
+    </html>    
