@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import config from './config.js';
 import '../models/user.server.model.js'; // Load the 'User' model
-import '../models/article.server.model.js'; // Load the 'Article' model
+
 
 // Define the Mongoose configuration method
 const connectToDatabase = async () => {

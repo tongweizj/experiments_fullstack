@@ -7,18 +7,10 @@ const typeDefs = `#graphql
     password: String
   }
 
-  type Article {
-    id: ID!
-    title: String!
-    content: String!
-    authorId: ID!
-  }
 
   type Query {
     users: [User!]!
     user(id: ID!): User
-    articles: [Article!]!
-    article(id: ID!): Article
     isLoggedIn: Boolean!
   }
 
@@ -27,8 +19,6 @@ const typeDefs = `#graphql
     updateUser(id: ID!, userName: String!, email: String!): User
     loginUser(email: String!, password: String!): Boolean
     logOut: String
-    addArticle(title: String!, content: String!): Article
-    editArticle(id: ID!, content: String!): Article
   }
 `;
 

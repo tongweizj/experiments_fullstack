@@ -7,8 +7,7 @@ import { gql, useQuery, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
 import "./entryform.css"
-//
-import ArticlesHome from './ArticlesHome'
+
 //
 // mutation for user login
 const LOGIN_USER = gql`
@@ -97,8 +96,7 @@ function Login() {
     // Render the login form or the welcome message based on the value of 'screen'
     return (
         <div className="entryform">
-            { screen !==false ? (
-                <ArticlesHome screen={screen} setScreen={setScreen} /> ) : (
+          
 
                 <Form onSubmit={handleLogin}>
                     
@@ -119,7 +117,7 @@ function Login() {
                     </Button>
                   
                 </Form>
-            )}            
+                        
             
         </div>
     );
