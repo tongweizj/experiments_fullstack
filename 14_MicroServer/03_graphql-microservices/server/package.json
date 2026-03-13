@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "gateway.js",
+  "scripts": {
+    "start:product": "node ./microservices/product-microservice.js",
+    "start:auth": "node ./microservices/auth-microservice.js",
+    "start:gateway": "node ./gateway.js",
+    "start:all": "npm-run-all --parallel start:product start:auth start:gateway"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@apollo/federation": "^0.38.1",
+    "@apollo/gateway": "^2.10.0",
+    "@apollo/server": "^4.11.3",
+    "apollo-server-express": "^3.13.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "type": "module"
+}

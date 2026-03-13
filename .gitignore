@@ -134,3 +134,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+14_MicroServer/03_graphql-microservices/client/shell-app/package-lock.json
