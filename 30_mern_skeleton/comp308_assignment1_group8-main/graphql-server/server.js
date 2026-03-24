@@ -1,0 +1,46 @@
+// server.js is the entry point for the GraphQL server. 
+// It connects to MongoDB, creates an Apollo Server, and starts
+// the server on port 4000.
+require('dotenv').config(); // Load environment variables
+const { ApolloServer } = require('@apollo/server');
+const { startStandaloneServer } = require('@apollo/server/standalone');
+const configureMongoose = require('./config/mongoose');   
+const typeDefs = require('./schemas');
+const resolvers = require('./resolvers');
+const jwt = require('jsonwebtoken');
+
+// Initialize the application
+
+const startServer = async () => {
+  // Step 1: Connect to MongoDB
+  await configureMongoose();
+
+  // Step 2: Create Apollo Server
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
+
+  // Step 3: Start Apollo Server
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 4000 },
+    context: async ({ req }) => {
+      const token = req.headers.authorization || '';
+      if (token) {
+        try {
+          const user = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET || 'developmentSessionSecret');
+          return { user };
+        } catch (e) {
+          console.error('Invalid token');
+        }
+      }
+      return {};
+    },
+  });
+
+  console.log(`🚀 GraphQL server ready at ${url}`);
+};
+
+// Start the server
+startServer();
+
